@@ -45,8 +45,8 @@ class AlbumTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         albumArt = createAlbumImage()
-        albumLabel = createLabel(withFontStyle: .subheadline)
-        artistLabel = createLabel(withFontStyle: .footnote)
+        albumLabel = createLabel(withFontStyle: .headline)
+        artistLabel = createLabel(withFontStyle: .subheadline)
         super.init(coder: coder)
     }
     

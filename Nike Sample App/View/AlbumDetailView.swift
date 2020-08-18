@@ -45,7 +45,7 @@ class AlbumDetailView: UIViewController {
     /// Album copyright label
     let copyrightLabel: UILabel = createLabel(withFontStyle: .caption1, numberOfLines: 0)
     /// Button to redirect user to apple music page of album
-    let albumStoreButton: UIButton = createStoreButton(buttonTitle: "Visit Album on Store")
+    let albumStoreButton: UIButton = createStoreButton(buttonTitle: "Visit Album on Apple Music")
     
     /// Initializer for detail view - sets up all views
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -116,35 +116,9 @@ class AlbumDetailView: UIViewController {
             return
         }
         
-        ///This will redirect the user to Apple Music instead of the Itunes Store
-        /*if UIApplication.shared.canOpenURL(albumStoreUrl) {
+        ///This will redirect the user to Apple Music if they have the app installed
+        if UIApplication.shared.canOpenURL(albumStoreUrl) {
             UIApplication.shared.open(albumStoreUrl, options: [:]) { (success) in
-                print("Opened itunes store: \(success ? "true" : "false")")
-            }
-        }*/
-        
-        //This is the url to open the iTunes store app
-        let itunesStoreUrlStr = "itms://itunes.apple.com"
-        guard var itunesStoreUrl = URL(string: itunesStoreUrlStr) else {
-            print("unable to make url to itunes store")
-            return
-        }
-        for pathComponent in albumStoreUrl.pathComponents {
-            itunesStoreUrl = itunesStoreUrl.appendingPathComponent(pathComponent)
-        }
-        var urlComponent = URLComponents(url: itunesStoreUrl, resolvingAgainstBaseURL: false)
-        //Need to add a query component to open the app
-        let queryItemArr = [URLQueryItem(name: "app", value: "itunes")]
-        urlComponent?.queryItems = queryItemArr
-        print("\(String(describing: urlComponent?.url?.absoluteString))")
-        
-        guard let storeURL = urlComponent?.url else {
-            print("unable to make url to album in itunes store")
-            return
-        }
-        
-        if UIApplication.shared.canOpenURL(storeURL) {
-            UIApplication.shared.open(storeURL, options: [:]) { success in
                 print("Opened itunes store: \(success ? "true" : "false")")
             }
         }

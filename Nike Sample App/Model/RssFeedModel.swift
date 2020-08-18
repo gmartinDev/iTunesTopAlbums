@@ -36,14 +36,7 @@ struct RssFeedModel: Decodable {
         case results
     }
     
-    init() {
-        title = nil
-        id = nil
-        author = nil
-        country = nil
-        updated = nil
-        results = nil
-    }
+    init() { }
     
     init(from decoder: Decoder) throws {
         do {
@@ -51,12 +44,12 @@ struct RssFeedModel: Decodable {
             //all the data is held within the feed container
             let feed = try container.nestedContainer(keyedBy: RssFeedKeys.self, forKey: .feed)
             
-            title = try feed.decode(String.self, forKey: .title)
-            id = try feed.decode(String.self, forKey: .id)
-            author = try feed.decode(AuthorModel.self, forKey: .author)
-            country = try feed.decode(String.self, forKey: .country)
-            updated = try feed.decode(String.self, forKey: .updated)
-            results = try feed.decode([AlbumModel].self, forKey: .results)
+            title = try feed.decodeIfPresent(String.self, forKey: .title)
+            id = try feed.decodeIfPresent(String.self, forKey: .id)
+            author = try feed.decodeIfPresent(AuthorModel.self, forKey: .author)
+            country = try feed.decodeIfPresent(String.self, forKey: .country)
+            updated = try feed.decodeIfPresent(String.self, forKey: .updated)
+            results = try feed.decodeIfPresent([AlbumModel].self, forKey: .results)
         } catch (let error as NSError) {
             print("An error occured decoding RssFeed: \(error.localizedDescription)")
         }

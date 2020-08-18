@@ -22,23 +22,9 @@ struct GenreModel: Decodable {
     init(from decoder: Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: GenreKeys.self)
-            
-            if container.contains(.genreId) {
-                genreId = try container.decode(String.self, forKey: .genreId)
-            } else {
-                genreId = nil
-            }
-            if container.contains(.name) {
-                name = try container.decode(String.self, forKey: .name)
-            } else {
-                name = nil
-            }
-            
-            if container.contains(.url) {
-                url = try container.decode(URL.self, forKey: .url)
-            } else {
-                url = nil
-            }
+            genreId = try container.decodeIfPresent(String.self, forKey: .genreId)
+            name = try container.decodeIfPresent(String.self, forKey: .name)
+            url = try container.decodeIfPresent(URL.self, forKey: .url)
         } catch (let error as NSError) {
             print(error.localizedDescription)
         }

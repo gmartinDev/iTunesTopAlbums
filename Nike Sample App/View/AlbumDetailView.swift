@@ -35,15 +35,15 @@ class AlbumDetailView: UIViewController {
     /// Image to hold album artwork
     let albumArt: UIImageView = createAlbumImage()
     /// Album name label
-    let albumLabel: UILabel = createLabel(withFontSize: 26, numberOfLines: 0)
+    let albumLabel: UILabel = createLabel(withFontStyle: .title1, numberOfLines: 0)
     /// Artist name label
-    let artistLabel: UILabel = createLabel(withFontSize: 24, numberOfLines: 0)
+    let artistLabel: UILabel = createLabel(withFontStyle: .title2, numberOfLines: 0)
     /// Album genre name label
-    let genreLabel: UILabel = createLabel(withFontSize: 16, numberOfLines: 0)
+    let genreLabel: UILabel = createLabel(withFontStyle: .footnote, numberOfLines: 0)
     /// Album release date label
-    let releaseDateLabel: UILabel = createLabel(withFontSize: 16, numberOfLines: 0)
+    let releaseDateLabel: UILabel = createLabel(withFontStyle: .footnote, numberOfLines: 0)
     /// Album copyright label
-    let copyrightLabel: UILabel = createLabel(withFontSize: 16, numberOfLines: 0)
+    let copyrightLabel: UILabel = createLabel(withFontStyle: .caption1, numberOfLines: 0)
     /// Button to redirect user to apple music page of album
     let albumStoreButton: UIButton = createStoreButton(buttonTitle: "Visit Album on Store")
     

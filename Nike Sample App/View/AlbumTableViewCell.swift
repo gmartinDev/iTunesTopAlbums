@@ -32,8 +32,8 @@ class AlbumTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         albumArt = createAlbumImage()
-        albumLabel = createLabel(withFontSize: 24)
-        artistLabel = createLabel(withFontSize: 18)
+        albumLabel = createLabel(withFontStyle: .title1)
+        artistLabel = createLabel(withFontStyle: .title2)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //Create views to show in cell
         self.contentView.addSubview(albumArt)
@@ -45,8 +45,8 @@ class AlbumTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         albumArt = createAlbumImage()
-        albumLabel = createLabel(withFontSize: 26, numberOfLines: 2)
-        artistLabel = createLabel(withFontSize: 24)
+        albumLabel = createLabel(withFontStyle: .subheadline)
+        artistLabel = createLabel(withFontStyle: .footnote)
         super.init(coder: coder)
     }
     

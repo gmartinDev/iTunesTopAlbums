@@ -8,9 +8,9 @@
 
 import UIKit
 
-public func createLabel(withFontSize fontSize: CGFloat, numberOfLines lines: Int = 1) -> UILabel {
+public func createLabel(withFontStyle fontStyle: UIFont.TextStyle, numberOfLines lines: Int = 1) -> UILabel {
     let label = UILabel()
-    label.font = UIFont.systemFont(ofSize: fontSize)
+    label.font = UIFont.preferredFont(forTextStyle: fontStyle)
     label.numberOfLines = lines
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
